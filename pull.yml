@@ -1,0 +1,17 @@
+---
+- name: Pull Docker Images using Ansible
+  hosts: target
+  become: yes
+  become_method: sudo
+  vars:
+    ansible_become_password: osboxes.org
+
+  tasks:
+    - name: Pull Docker images
+      docker_image:
+        name: '{{ item }}'
+      loop:
+        - ubuntu:latest
+        - nginx:latest
+        - alpine:latest
+      become: yes

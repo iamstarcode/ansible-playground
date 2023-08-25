@@ -1,0 +1,4 @@
+[target]
+#target ansible_host=192.168.8.103 ansible_ssh_pass=osboxes.org
+target ansible_host=192.168.8.102 ansible_ssh_private_key=/home/osboxes/.ssh/key.pem
+
