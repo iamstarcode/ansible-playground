@@ -1,6 +1,6 @@
-[target]
 #target ansible_host=192.168.8.102 ansible_ssh_pass=osboxes.org
-targetone ansible_host=192.168.8.101 ansible_ssh_private_key=/home/starcode/.ssh/id_rsa
-targettwo ansible_host=192.168.8.102 ansible_ssh_private_key=/home/starcode/.ssh/id_rsa
+[target]
+target-one ansible_host=osboxes@192.168.8.101 ansible_ssh_private_key=/home/starcode/.ssh/id_rsa 
+target-two ansible_host=osboxes@192.168.8.102 ansible_ssh_private_key=/home/starcode/.ssh/id_rsa
 
 

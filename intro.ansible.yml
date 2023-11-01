@@ -1,5 +1,0 @@
----
-- name: Intro to Ansible
-  hosts: target
-  tasks:
-    - name: Hello World

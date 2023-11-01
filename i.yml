@@ -1,0 +1,13 @@
+- name: Handling Files
+  hosts: target
+  tasks:
+    - name: Create tmp directory if does not exit
+      ansible.builtin.file:
+        state: directory
+        path: '$HOME/tmp'
+        mode: '750'
+    - name: Creating a text file
+      ansible.builtin.copy:
+        content: 'This is the content to copy now'
+        dest: '$HOME/tmp/example.txt'
+        mode: '700'

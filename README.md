@@ -12,5 +12,10 @@ ssh-copy-id osboxes@192.168.8.101
 then try to ping your targets
 ansible target -m ping -i inventory.txt
 
-to copy files
-scp -r ./ osboxes@192.168.8.101:helloworld
+variable passing
+in inventory file value=5
+inline -e "value=5"
+using var-files array
+and you can use vars_prompt
+
+use COPY, FILE
