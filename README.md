@@ -19,3 +19,6 @@ using var-files array
 and you can use vars_prompt
 
 use COPY, FILE
+
+to become sudo
+pass the --ask-become-pass
