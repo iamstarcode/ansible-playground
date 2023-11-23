@@ -1,3 +1,0 @@
-target ansible_host=192.168.8.103 ansible_ssh_pass=osboxes.org
-## ansible target -m ping -i inventory.txt
-ansible-playbook -i inventory.txt script.yml

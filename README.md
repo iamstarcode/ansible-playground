@@ -12,6 +12,9 @@ ssh-copy-id osboxes@192.168.8.101
 then try to ping your targets
 ansible target -m ping -i inventory.txt
 
+Run a playbook
+ansible-playbook i.yml -i inventory.txt
+
 variable passing
 in inventory file value=5
 inline -e "value=5"
