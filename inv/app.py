@@ -8,5 +8,3 @@ with open(file_name, "w") as file:
 
 for i in range(5):
     print(i)
-
-print(f"File '{file_name}' has been created.")

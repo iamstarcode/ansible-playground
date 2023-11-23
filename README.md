@@ -17,7 +17,13 @@ ansible-playbook i.yml -i inventory.txt
 
 variable passing
 in inventory file value=5
-inline -e "value=5"
+
+inline -e "value=5" || -e '{"var1": "value1", "var2": "value2"}'
+
+usings the "vars:" section
+vars:
+value: 5
+
 using var-files array
 and you can use vars_prompt
 
