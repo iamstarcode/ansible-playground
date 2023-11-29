@@ -8,7 +8,4 @@
   tasks:
     - name: Print the mutliplication by 2
       ansible.builtin.debug:
-        msg: '{{ value | int * 2 }}' ## using an host variab;e
-    - name: Hello World Print
-      ansible.builtin.debug:
-        msg: '{{ hello }}' ## usig the vars
+        msg: '{{ value | int * 2 }}'

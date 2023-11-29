@@ -1,0 +1,27 @@
+- name: Target
+  hosts: target
+  vars:
+    world: 'Hello World chnaged!'
+  tasks:
+    - name: Create a File
+      ansible.builtin.file:
+        state: touch
+        path: '$HOME/file.txt'
+        mode: '700'
+
+    - name: Add Text to File
+      ansible.builtin.blockinfile:
+        path: '$HOME/file.txt'
+        block: |
+          '{{ world }}'
+    - name: Create virtula host new.starcode.com
+      ansible.builtin.blockinfile:
+        path: '/$HOME/httpd.conf'
+        create: true
+        mode: '700'
+        block: |
+          <VirtualHost *:80>
+            ServerName new.starcode.com
+            DocumentRoot /var/www/new.starcode.com
+          </VirtualHost>
+        state: present

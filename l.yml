@@ -1,0 +1,10 @@
+- name: Loop
+  hosts: target
+  tasks:
+    - name: Example for loopin
+      ansible.builtin.debug:
+        msg: 'Welocome Mr. {{ item }}'
+      loop:
+        - Bakare
+        - Ijapa
+        - Tiroko
