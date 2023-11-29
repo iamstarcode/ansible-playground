@@ -2,20 +2,16 @@
 - name: Execute Python Script File and Capture Stdout
   hosts: target
   tasks:
-    - name: Make tmp directory if not found
-      command: mkdir /home/osboxes/tmp creates=/home/osboxes/tmp
     - name: Transfer Python Script File
-      copy:
+      ansible.builtin.copy:
         src: ./app.py
-        dest: /home/osboxes/tmp/app.py
-        mode: '0755'
-    - name: Make Script Executable
-      file:
-        path: /home/osboxes/tmp/app.py
-        mode: '0755'
+        dest: $HOME/app.py
+        force: true
+        mode: '755'
     - name: Run Python Script File
-      command: /home/osboxes/tmp/app.py
+      ansible.builtin.command: python3 $HOME/app.py
       register: script_output
+      changed_when: script_output != 0
     - name: Display Script Output
-      debug:
+      ansible.builtin.debug:
         var: script_output.stdout
