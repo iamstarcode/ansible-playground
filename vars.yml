@@ -1,0 +1,13 @@
+name: Abiola
+alias: Mr
+books:
+  - name: Ijapa tir
+    pages: 200
+  - name: Ali goes to school
+    pages: 150
+
+apps:
+  - git
+  - node
+  - python
+password: osboxes

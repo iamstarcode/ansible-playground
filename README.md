@@ -31,3 +31,5 @@ use COPY, FILE
 
 to become sudo
 pass the --ask-become-pass
+
+array ["abiola","ijapa"]

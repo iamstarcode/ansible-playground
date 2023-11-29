@@ -1,0 +1,15 @@
+- name: Target
+  hosts: target
+  vars:
+    world: 'Hello World has chnaged!'
+  tasks:
+    - name: Create a File
+      ansible.builtin.file:
+        state: touch
+        path: '$HOME/file.txt'
+        mode: '700'
+    - name: Add Text to File
+      ansible.builtin.blockinfile:
+        path: '$HOME/file.txt'
+        block: |
+          '{{ world }}'

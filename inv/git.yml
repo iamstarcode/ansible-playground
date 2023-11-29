@@ -1,29 +1,29 @@
 ---
 - name: Install git
   hosts: target
-  become: yes
-  become_method: sudo
+  become: true
+  become_method: ansible.builtin.sudo
   vars:
     ansible_become_password: osboxes.org
   tasks:
     - name: Update APT package cache
       ansible.builtin.apt:
-        update_cache: yes
-      become: yes
+        update_cache: true
+      become: true
     - name: Install Git
-      apt:
+      ansible.builtin.apt:
         name: git
         state: present
-      become: yes
+      become: true
       async: 1000
       poll: 0
       register: install_result
     - name: Wait for Git installation to complete
-      wait_for:
+      ansible.builtin.wait_for:
         path: /usr/bin/git
         state: present
       register: install_result
       retries: 300
     - name: Display Git installation result
-      debug:
+      ansible.builtin.debug:
         var: install_result

@@ -1,0 +1,11 @@
+- name: Hello World
+  hosts: target
+  vars:
+    alias: Mrs
+    another: Another
+
+  tasks:
+    - name: Print Hello World from frontend
+      ansible.builtin.debug:
+        msg: 'Welcome {{ alias }} {{ name }} {{ inif }}'
+      loop: '{{ books }}'
