@@ -2,7 +2,7 @@
 - name: Git checkout
   hosts: target
   tasks:
-    - name: Test
+    - name: Clone a repo
       ansible.builtin.git:
         repo: 'https://github.com/iamstarcode/cat-wiki-api-express.git'
         dest: /home/osboxes/hellowordl/repo
