@@ -3,10 +3,12 @@
   hosts: target
   tasks:
     - name: Do somethong first
-      ansible.builtin.shell: curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh | bash
+      ansible.builtin.uri: curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
       args:
         creates: '{{ ansible_env.HOME }}/.nvm/nvm.sh'
-    - name: Install node 18
+    - name: Install a LTS
+      ansible.builtin.command: nvm install --lts
+    - name: List installed node
       ansible.builtin.shell: nvm list
       register: cmd_output
     - name: Display Script Output
