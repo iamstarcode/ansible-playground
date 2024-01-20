@@ -1,16 +1,21 @@
 ---
 - name: Install Nvm in host machine
-  hosts: target
+  hosts: web
+  become: true
   tasks:
-    - name: Do somethong first
-      ansible.builtin.uri: curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+    - name: Run apt-get update
+      ansible.builtin.apt:
+        update_cache: true
+        upgrade: true
+
+    - name: Run NVM install script
+      ansible.builtin.shell: >
+        curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
       args:
         creates: '{{ ansible_env.HOME }}/.nvm/nvm.sh'
+
     - name: Install a LTS
-      ansible.builtin.command: nvm install --lts
-    - name: List installed node
-      ansible.builtin.shell: nvm list
-      register: cmd_output
-    - name: Display Script Output
-      debug:
-        var: cmd_output.stdout
+      ansible.builtin.shell: 'source {{ ansible_env.HOME }}/.nvm/nvm.sh && nvm install --lts'
+      args:
+        executable: /bin/bash
+      changed_when: false
