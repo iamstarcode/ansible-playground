@@ -3,8 +3,9 @@
   hosts: web
   become: true
   tasks:
-    - name: Install Java and JDK (for Debian)
+    - name: Install Java and JDK
       ansible.builtin.apt:
+        update_cache: true
         name:
           - openjdk-17-jre
           - fontconfig
