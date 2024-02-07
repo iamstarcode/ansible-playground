@@ -11,7 +11,7 @@
           - fontconfig
         state: present
 
-    - name: Download Jenkins keyring
+    - name: Download Jenkins APT key
       ansible.builtin.get_url:
         url: https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key
         dest: /usr/share/keyrings/jenkins-keyring.asc
@@ -44,7 +44,7 @@
     - name: Allow OpenSSH (SSH)
       community.general.ufw:
         rule: allow
-        port: OpenSSH
+        port: 22
 
     - name: Enable UFW
       community.general.ufw:
