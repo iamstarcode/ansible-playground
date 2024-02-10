@@ -4,14 +4,20 @@
   become: true
 
   tasks:
+    - name: Update APT package cache
+      ansible.builtin.apt:
+        update_cache: true
+    - name: Install Nginx
+      ansible.builtin.apt:
+        name:
+          - nginx
+        state: present
     - name: Start Nginx service
       ansible.builtin.service:
         name: nginx
         state: started
         enabled: true
-
-    - name: Copy HTML file to serve
-      ansible.builtin.copy:
-        mode: '700'
-        src: index.html
-        dest: /var/www/html/index.html
+    - name: Allow Nginx HTTP
+      community.general.ufw:
+        rule: allow
+        name: 'Nginx HTTP'
